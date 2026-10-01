@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#f8f5ee">
+	<meta name="description" content="Frappés hechos para disfrutar sin prisa. Descubre los favoritos de Nube Frappe y arma tu pedido.">
+	<title>Nube Frappe | Un antojo en las nubes</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+	<style>
+		:root {
+			--cream: #f8f5ee;
+			--ink: #262820;
+			--muted: #76776d;
+			--green: #4d674b;
+			--green-dark: #354a35;
+			--pink: #edb5a7;
+			--line: #e8e3d9;
+			--white: #fffefa;
+			--serif: "Playfair Display", Georgia, serif;
+			--sans: "DM Sans", sans-serif;
+		}
+
+		* { box-sizing: border-box; }
+		html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+		body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+		button, a { font: inherit; }
+		button { cursor: pointer; }
+		a { color: inherit; text-decoration: none; }
+		img { display: block; max-width: 100%; }
+		.page-wrap { overflow: hidden; }
+		.announcement { padding: 9px 20px; background: var(--green-dark); color: #fff; text-align: center; font-size: 11px; letter-spacing: .08em; }
+		.announcement span { color: #f4c9bd; }
+		.nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 max(5vw, calc((100vw - 1240px) / 2)); background: rgba(248,245,238,.94); border-bottom: 1px solid rgba(38,40,32,.08); backdrop-filter: blur(14px); }
+		.brand { display: inline-flex; gap: 10px; align-items: center; font-family: var(--serif); font-weight: 700; font-size: 21px; }
+		.brand-mark { display: grid; width: 35px; height: 35px; place-items: center; border-radius: 50%; background: var(--green); color: white; font-family: var(--sans); font-size: 17px; }
+		.nav-links { display: flex; align-items: center; gap: 34px; color: #55574f; font-size: 13px; }
+		.nav-links a { transition: color .2s; }
+		.nav-links a:hover { color: var(--green); }
+		.cart-button { display: inline-flex; align-items: center; gap: 9px; padding: 10px 15px; border: 1px solid var(--line); border-radius: 99px; background: var(--white); color: var(--ink); font-size: 12px; transition: background .2s, transform .2s; }
+		.cart-button:hover { background: #fff; transform: translateY(-2px); }
+		.cart-count { display: grid; width: 21px; height: 21px; place-items: center; border-radius: 50%; background: var(--green); color: white; font-size: 11px; }
+
+		.hero { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; min-height: 620px; max-width: 1440px; margin: 0 auto; padding: 76px max(7vw, calc((100vw - 1180px) / 2)) 82px; }
+		.hero-copy { position: relative; z-index: 2; max-width: 510px; animation: rise-in .8s both; }
+		.eyebrow { display: inline-flex; align-items: center; gap: 9px; margin-bottom: 23px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+		.eyebrow::before { width: 23px; height: 1px; background: currentColor; content: ""; }
+		h1, h2, h3, p { margin-top: 0; }
+		h1 { margin-bottom: 20px; font-family: var(--serif); font-size: clamp(48px, 5.5vw, 76px); font-weight: 600; letter-spacing: 0; line-height: 1.04; }
+		h1 em { color: var(--green); font-weight: 600; }
+		.hero-copy > p { max-width: 410px; margin-bottom: 30px; color: var(--muted); font-size: 15px; line-height: 1.8; }
+		.button-row { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
+		.button-primary { display: inline-flex; justify-content: center; align-items: center; gap: 11px; min-height: 51px; padding: 0 22px; border: 0; border-radius: 4px; background: var(--green); color: white; font-size: 13px; font-weight: 600; transition: transform .2s, background .2s, box-shadow .2s; }
+		.button-primary:hover { transform: translateY(-3px); background: var(--green-dark); box-shadow: 0 10px 25px #354a3526; }
+		.text-link { display: inline-flex; align-items: center; gap: 7px; color: var(--ink); font-size: 12px; font-weight: 600; }
+		.text-link span { transition: transform .2s; }
+		.text-link:hover span { transform: translateX(4px); }
+		.hero-note { display: flex; align-items: center; gap: 11px; margin-top: 38px; color: var(--muted); font-size: 11px; }
+		.avatar-stack { display: flex; padding-left: 5px; }
+		.avatar-stack img { width: 29px; height: 29px; margin-left: -5px; border: 2px solid var(--cream); border-radius: 50%; object-fit: cover; }
+		.hero-visual { position: relative; min-height: 450px; animation: rise-in .9s .12s both; }
+		.hero-photo { position: absolute; inset: 0 6% 0 8%; overflow: hidden; border-radius: 47% 47% 5px 5px; background: #d8c9ac; }
+		.hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center; animation: photo-enter 1.3s ease-out both; }
+		.hero-photo::after { position: absolute; inset: 45% 0 0; background: linear-gradient(transparent, #17191358); content: ""; }
+		.photo-label { position: absolute; right: 11%; bottom: 25px; z-index: 1; color: white; font-family: var(--serif); font-size: 19px; font-style: italic; }
+		.floating-tag { position: absolute; top: 13%; left: -4%; z-index: 2; display: grid; width: 93px; height: 93px; place-content: center; border-radius: 50%; background: var(--pink); color: #513e36; text-align: center; transform: rotate(-9deg); animation: float 4s ease-in-out infinite; }
+		.floating-tag strong { font-family: var(--serif); font-size: 21px; line-height: 1; }
+		.floating-tag small { margin-top: 5px; font-size: 9px; letter-spacing: .06em; }
+		.hero-scribble { position: absolute; right: -5%; top: 20%; width: 90px; color: var(--green); font-family: var(--serif); font-size: 46px; transform: rotate(14deg); }
+
+		.ticker { overflow: hidden; padding: 15px 0; background: var(--green); color: white; }
+		.ticker-track { display: flex; width: max-content; align-items: center; animation: ticker 26s linear infinite; }
+		.ticker-item { display: inline-flex; align-items: center; gap: 26px; padding: 0 26px; font-family: var(--serif); font-size: 16px; font-style: italic; white-space: nowrap; }
+		.ticker-item b { color: #f0c6b8; font-family: var(--sans); font-size: 13px; }
+
+		.section { max-width: 1240px; margin: 0 auto; padding: 100px 30px; }
+		.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 38px; }
+		.section-heading h2 { margin-bottom: 8px; font-family: var(--serif); font-size: clamp(34px, 4vw, 48px); font-weight: 600; line-height: 1.1; }
+		.section-heading p { margin-bottom: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
+		.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; }
+		.menu-card { overflow: hidden; background: var(--white); border: 1px solid #ece8df; transition: transform .3s, box-shadow .3s; }
+		.menu-card:hover { transform: translateY(-7px); box-shadow: 0 18px 38px #35372812; }
+		.menu-image { position: relative; height: 270px; overflow: hidden; background: #e7ded0; }
+		.menu-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+		.menu-card:hover .menu-image img { transform: scale(1.06); }
+		.badge { position: absolute; top: 14px; left: 14px; padding: 7px 10px; background: var(--cream); color: var(--green-dark); font-size: 9px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+		.menu-info { padding: 19px 19px 17px; }
+		.menu-title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+		.menu-title-row h3 { margin: 0; font-family: var(--serif); font-size: 21px; font-weight: 600; }
+		.price { color: var(--green); font-size: 14px; font-weight: 700; white-space: nowrap; }
+		.menu-info p { min-height: 38px; margin: 9px 0 16px; color: var(--muted); font-size: 11px; line-height: 1.7; }
+		.add-button { display: flex; width: 100%; justify-content: space-between; align-items: center; padding: 11px 0 0; border: 0; border-top: 1px solid var(--line); background: transparent; color: var(--green-dark); font-size: 11px; font-weight: 700; text-align: left; }
+		.add-button span:last-child { display: grid; width: 25px; height: 25px; place-items: center; border: 1px solid #dce2d8; border-radius: 50%; font-size: 16px; transition: color .2s, background .2s; }
+		.add-button:hover span:last-child { background: var(--green); color: white; }
+
+		.story { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 9%; max-width: none; padding: 92px max(8vw, calc((100vw - 1120px) / 2)); background: #eee9de; }
+		.story-photo { position: relative; height: 410px; }
+		.story-photo img { width: 100%; height: 100%; object-fit: cover; }
+		.story-photo::before { position: absolute; top: -14px; left: -14px; width: 80px; height: 80px; border-top: 1px solid var(--green); border-left: 1px solid var(--green); content: ""; }
+		.story-copy h2 { max-width: 470px; margin: 0 0 20px; font-family: var(--serif); font-size: clamp(36px, 4vw, 51px); font-weight: 600; line-height: 1.12; }
+		.story-copy > p { max-width: 440px; margin-bottom: 23px; color: var(--muted); font-size: 13px; line-height: 1.9; }
+		.promise-list { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 28px; }
+		.promise { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; }
+		.promise span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #dce2d8; color: var(--green); font-size: 13px; }
+
+		.quote-section { padding: 84px 25px; text-align: center; }
+		.quote-mark { color: var(--pink); font-family: var(--serif); font-size: 56px; line-height: .8; }
+		.quote-section blockquote { max-width: 690px; margin: 16px auto 18px; font-family: var(--serif); font-size: clamp(23px, 3vw, 34px); line-height: 1.4; }
+		.quote-section p { color: var(--muted); font-size: 11px; }
+		.stars { margin-bottom: 8px; color: #b07a44; letter-spacing: .16em; }
+
+		.closing-cta { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 30px; max-width: 1180px; margin: 0 auto 90px; padding: 42px 52px; overflow: hidden; background: var(--green-dark); color: white; }
+		.closing-cta::after { position: absolute; top: -110px; right: 13%; width: 260px; height: 260px; border: 1px solid #ffffff24; border-radius: 50%; box-shadow: 0 0 0 24px #ffffff08, 0 0 0 48px #ffffff06; content: ""; }
+		.closing-cta h2 { position: relative; z-index: 1; max-width: 540px; margin: 0 0 8px; font-family: var(--serif); font-size: clamp(28px, 3.4vw, 39px); font-weight: 600; }
+		.closing-cta p { position: relative; z-index: 1; margin: 0; color: #d4dbd1; font-size: 12px; }
+		.closing-cta .button-primary { position: relative; z-index: 2; flex-shrink: 0; background: #f0c6b8; color: var(--ink); }
+		.closing-cta .button-primary:hover { background: #f5d4c9; }
+		footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 1240px; margin: 0 auto; padding: 26px 30px 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+		footer .brand { color: var(--ink); font-size: 17px; }
+		footer .brand-mark { width: 29px; height: 29px; font-size: 14px; }
+		.footer-links { display: flex; gap: 20px; }
+		.footer-links a:hover { color: var(--green); }
+
+		.cart-panel { position: fixed; inset: 0 0 0 auto; z-index: 50; display: flex; width: min(410px, 100%); flex-direction: column; padding: 25px; background: var(--white); box-shadow: -15px 0 45px #00000018; transform: translateX(105%); transition: transform .32s ease; }
+		.cart-panel.open { transform: translateX(0); }
+		.cart-overlay { position: fixed; inset: 0; z-index: 49; background: #20221d73; opacity: 0; pointer-events: none; transition: opacity .25s; }
+		.cart-overlay.visible { opacity: 1; pointer-events: auto; }
+		.cart-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 19px; border-bottom: 1px solid var(--line); }
+		.cart-header h2 { margin: 0; font-family: var(--serif); font-size: 27px; }
+		.icon-button { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: transparent; color: var(--ink); font-size: 19px; }
+		.cart-items { flex: 1; overflow: auto; padding: 12px 0; }
+		.empty-cart { padding: 45px 10px; color: var(--muted); font-size: 13px; text-align: center; line-height: 1.7; }
+		.cart-row { display: grid; grid-template-columns: 1fr auto; gap: 9px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+		.cart-row strong { display: block; font-family: var(--serif); font-size: 17px; }
+		.cart-row small { display: block; margin-top: 4px; color: var(--muted); font-size: 11px; }
+		.quantity-control { display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: 12px; }
+		.quantity-control button { width: 25px; height: 25px; border: 1px solid var(--line); border-radius: 50%; background: white; }
+		.cart-bottom { padding-top: 18px; border-top: 1px solid var(--line); }
+		.cart-total { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 14px; font-weight: 700; }
+		.checkout { width: 100%; }
+		.checkout:disabled { cursor: not-allowed; opacity: .45; }
+		.toast { position: fixed; right: 22px; bottom: 22px; z-index: 60; padding: 13px 18px; background: var(--ink); color: white; font-size: 12px; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity .25s, transform .25s; }
+		.toast.show { opacity: 1; transform: translateY(0); }
+		.reveal { opacity: 0; transform: translateY(22px); transition: opacity .65s ease, transform .65s ease; }
+		.reveal.visible { opacity: 1; transform: translateY(0); }
+		@keyframes rise-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+		@keyframes photo-enter { from { transform: scale(1.08); filter: saturate(.6); } to { transform: scale(1); filter: saturate(1); } }
+		@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+		@keyframes ticker { to { transform: translateX(-50%); } }
+
+		@media (max-width: 760px) {
+			.nav { height: 65px; padding: 0 18px; }
+			.nav-links { display: none; }
+			.brand { font-size: 18px; }
+			.cart-button { padding: 8px 10px; }
+			.hero { grid-template-columns: 1fr; gap: 35px; min-height: auto; padding: 62px 25px 55px; }
+			.hero-copy { max-width: 560px; }
+			h1 { max-width: 490px; font-size: clamp(49px, 12vw, 68px); }
+			.hero-visual { min-height: 420px; margin: 0 7px; }
+			.hero-photo { inset: 0 8%; }
+			.hero-scribble { right: 0; }
+			.section { padding: 72px 22px; }
+			.section-heading { align-items: start; flex-direction: column; margin-bottom: 27px; }
+			.menu-grid { grid-template-columns: repeat(2, 1fr); gap: 13px; }
+			.menu-image { height: 210px; }
+			.menu-info { padding: 14px 13px; }
+			.menu-title-row { align-items: start; flex-direction: column; gap: 4px; }
+			.menu-title-row h3 { font-size: 19px; }
+			.menu-info p { min-height: 55px; font-size: 10px; }
+			.story { grid-template-columns: 1fr; gap: 38px; padding: 65px 27px; }
+			.story-photo { height: 310px; margin: 0 8px; }
+			.story-copy h2 { font-size: 39px; }
+			.closing-cta { align-items: flex-start; flex-direction: column; margin: 0 18px 60px; padding: 32px 25px; }
+			footer { align-items: flex-start; flex-direction: column; padding: 25px 22px; }
+		}
+		@media (max-width: 390px) {
+			.announcement { font-size: 9px; }
+			.hero { padding-inline: 19px; }
+			.hero-visual { min-height: 340px; }
+			.floating-tag { width: 77px; height: 77px; }
+			.menu-grid { grid-template-columns: 1fr; gap: 17px; }
+			.menu-image { height: 260px; }
+			.menu-title-row { align-items: baseline; flex-direction: row; }
+			.menu-info p { min-height: 0; }
+			.promise-list { grid-template-columns: 1fr; }
+		}
+		@media (prefers-reduced-motion: reduce) {
+			*, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+			.reveal { opacity: 1; transform: none; }
+		}
+	</style>
+</head>
+<body>
+	<div class="page-wrap">
+		<div class="announcement">Un antojo bonito merece un <span>frappé perfecto</span> · Hecho al momento</div>
+		<header class="nav">
+			<a class="brand" href="#inicio" aria-label="Nube Frappe, inicio"><span class="brand-mark">n</span> nube frappe</a>
+			<nav class="nav-links" aria-label="Navegación principal">
+				<a href="#menu">El menú</a>
+				<a href="#nosotros">Nuestra esencia</a>
+				<a href="#opiniones">Opiniones</a>
+			</nav>
+			<button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Tu pedido <span class="cart-count" id="cart-count">0</span></button>
+		</header>
+
+		<main>
+			<section class="hero" id="inicio">
+				<div class="hero-copy">
+					<div class="eyebrow">Tu pausa favorita</div>
+					<h1>Un antojo<br>en las <em>nubes.</em></h1>
+					<p>Frappés cremositos, ingredientes de verdad y ese primer sorbo que te arregla el día. Preparados con cariño, justo como te gustan.</p>
+					<div class="button-row">
+						<a class="button-primary" href="#menu">Encuentra tu favorito <span aria-hidden="true">→</span></a>
+						<a class="text-link" href="#nosotros">Conócenos <span aria-hidden="true">↗</span></a>
+					</div>
+					<div class="hero-note">
+						<div class="avatar-stack" aria-hidden="true">
+							<img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=80&q=80" alt="">
+							<img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=80&q=80" alt="">
+							<img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=80&q=80" alt="">
+						</div>
+						<span>El favorito de quienes ya nos probaron</span>
+					</div>
+				</div>
+				<div class="hero-visual" aria-label="Frappé de fresa con crema">
+					<div class="hero-photo"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=1100&q=88" alt="Frappé cremoso con crema batida y fresas" fetchpriority="high"><span class="photo-label">Un sorbo y sonríes.</span></div>
+					<div class="floating-tag"><strong>100%</strong><small>hecho con<br>cariño</small></div>
+					<div class="hero-scribble" aria-hidden="true">✳</div>
+				</div>
+			</section>
+
+			<div class="ticker" aria-label="Preparado al momento, ingredientes reales, felicidad en cada sorbo">
+				<div class="ticker-track" aria-hidden="true">
+					<span class="ticker-item">Preparado al momento <b>✳</b></span><span class="ticker-item">Ingredientes reales <b>✳</b></span><span class="ticker-item">Felicidad en cada sorbo <b>✳</b></span><span class="ticker-item">Un capricho bien merecido <b>✳</b></span>
+					<span class="ticker-item">Preparado al momento <b>✳</b></span><span class="ticker-item">Ingredientes reales <b>✳</b></span><span class="ticker-item">Felicidad en cada sorbo <b>✳</b></span><span class="ticker-item">Un capricho bien merecido <b>✳</b></span>
+				</div>
+			</div>
+
+			<section class="section" id="menu">
+				<div class="section-heading reveal">
+					<div><div class="eyebrow">El menú</div><h2>¿Cuál se te antoja?</h2><p>Tu nuevo favorito está a un sorbo de distancia.</p></div>
+					<a class="text-link" href="#pedido">Pide el tuyo <span aria-hidden="true">→</span></a>
+				</div>
+				<div class="menu-grid">
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=82" alt="Frappé de fresa con crema" loading="lazy"><span class="badge">El consentido</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Fresa nube</h3><span class="price">$75</span></div><p>Fresas, leche cremosa y un toque de crema batida.</p><button class="add-button" type="button" data-name="Fresa nube" data-price="75">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=82" alt="Frappé frío de café con espuma" loading="lazy"><span class="badge">Para despertar</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Caramelo chill</h3><span class="price">$80</span></div><p>Café espresso, caramelo suave y hielito frappeado.</p><button class="add-button" type="button" data-name="Caramelo chill" data-price="80">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=700&q=82" alt="Frappé de chocolate con crema" loading="lazy"><span class="badge">Puro apapacho</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Choco abrazo</h3><span class="price">$78</span></div><p>Chocolate, leche fría y lluvia de chispitas.</p><button class="add-button" type="button" data-name="Choco abrazo" data-price="78">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+				</div>
+			</section>
+
+			<section class="section story" id="nosotros">
+				<div class="story-photo reveal"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85" alt="Preparación artesanal de una bebida de café" loading="lazy"></div>
+				<div class="story-copy reveal">
+					<div class="eyebrow">Hecho con intención</div>
+					<h2>Lo rico también puede sentirse especial.</h2>
+					<p>En Nube Frappe creemos que los pequeños gustos hacen los días grandes. Por eso usamos ingredientes que nos encantan, preparamos cada bebida al momento y le ponemos un poquito más de cariño.</p>
+					<a class="text-link" href="#menu">Descubre el menú <span aria-hidden="true">→</span></a>
+					<div class="promise-list"><div class="promise"><span aria-hidden="true">✳</span> Ingredientes frescos</div><div class="promise"><span aria-hidden="true">♡</span> Hecho al momento</div></div>
+				</div>
+			</section>
+
+			<section class="quote-section reveal" id="opiniones">
+				<div class="quote-mark" aria-hidden="true">“</div>
+				<div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+				<blockquote>“El de fresa sabe a que por fin llegó el fin de semana. Ya es mi parada obligatoria.”</blockquote>
+				<p>Mariana R. · Clienta feliz</p>
+			</section>
+
+			<section class="closing-cta" id="pedido">
+				<div><h2>Tu próximo antojo ya te está esperando.</h2><p>Elige tu favorito y prepáralo para compartir (o no).</p></div>
+				<a class="button-primary" href="#menu">Arma tu pedido <span aria-hidden="true">→</span></a>
+			</section>
+		</main>
+
+		<footer>
+			<a class="brand" href="#inicio"><span class="brand-mark">n</span> nube frappe</a>
+			<span>Una pausa rica, hecha con cariño.</span>
+			<div class="footer-links"><a href="#menu">Menú</a><a href="#nosotros">Nosotros</a><a href="#inicio">Volver arriba ↑</a></div>
+		</footer>
+	</div>
+
+	<div class="cart-overlay" id="cart-overlay"></div>
+	<aside class="cart-panel" id="cart-panel" aria-label="Tu pedido" aria-hidden="true">
+		<div class="cart-header"><h2>Tu pedido</h2><button class="icon-button" id="close-cart" type="button" aria-label="Cerrar carrito">×</button></div>
+		<div class="cart-items" id="cart-items"><div class="empty-cart">Todavía no hay nada por aquí.<br>¿Se te antoja un frappé?</div></div>
+		<div class="cart-bottom"><div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div><button class="button-primary checkout" id="checkout" type="button" disabled>Continuar por WhatsApp <span aria-hidden="true">→</span></button></div>
+	</aside>
+	<div class="toast" id="toast" role="status" aria-live="polite">Agregado a tu pedido</div>
+
+	<script>
+		const cart = new Map();
+		const cartPanel = document.getElementById('cart-panel');
+		const cartOverlay = document.getElementById('cart-overlay');
+		const cartItems = document.getElementById('cart-items');
+		const cartCount = document.getElementById('cart-count');
+		const cartTotal = document.getElementById('cart-total');
+		const checkout = document.getElementById('checkout');
+		const toast = document.getElementById('toast');
+		let toastTimer;
+
+		function formatPrice(amount) {
+			return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(amount);
+		}
+
+		function renderCart() {
+			const entries = [...cart.values()];
+			const count = entries.reduce((sum, item) => sum + item.quantity, 0);
+			const total = entries.reduce((sum, item) => sum + item.price * item.quantity, 0);
+			cartCount.textContent = count;
+			cartTotal.textContent = formatPrice(total);
+			checkout.disabled = count === 0;
+			if (!entries.length) {
+				cartItems.innerHTML = '<div class="empty-cart">Todavía no hay nada por aquí.<br>¿Se te antoja un frappé?</div>';
+				return;
+			}
+			cartItems.innerHTML = entries.map(item => `
+				<div class="cart-row">
+					<div><strong>${item.name}</strong><small>${formatPrice(item.price)} c/u</small></div>
+					<div class="quantity-control"><button type="button" data-action="remove" data-name="${item.name}" aria-label="Quitar uno de ${item.name}">−</button><span>${item.quantity}</span><button type="button" data-action="add" data-name="${item.name}" aria-label="Agregar uno de ${item.name}">+</button></div>
+				</div>`).join('');
+		}
+
+		function setCartOpen(open) {
+			cartPanel.classList.toggle('open', open);
+			cartOverlay.classList.toggle('visible', open);
+			cartPanel.setAttribute('aria-hidden', String(!open));
+			document.body.style.overflow = open ? 'hidden' : '';
+			if (open) document.getElementById('close-cart').focus();
+		}
+
+		function showToast() {
+			toast.classList.add('show');
+			clearTimeout(toastTimer);
+			toastTimer = setTimeout(() => toast.classList.remove('show'), 1900);
+		}
+
+		document.querySelectorAll('.add-button').forEach(button => {
+			button.addEventListener('click', () => {
+				const { name, price } = button.dataset;
+				const item = cart.get(name) || { name, price: Number(price), quantity: 0 };
+				item.quantity += 1;
+				cart.set(name, item);
+				renderCart();
+				showToast();
+			});
+		});
+
+		cartItems.addEventListener('click', event => {
+			const button = event.target.closest('button[data-action]');
+			if (!button) return;
+			const item = cart.get(button.dataset.name);
+			if (!item) return;
+			if (button.dataset.action === 'remove') item.quantity -= 1;
+			else item.quantity += 1;
+			if (item.quantity <= 0) cart.delete(item.name);
+			renderCart();
+		});
+
+		document.getElementById('open-cart').addEventListener('click', () => setCartOpen(true));
+		document.getElementById('close-cart').addEventListener('click', () => setCartOpen(false));
+		cartOverlay.addEventListener('click', () => setCartOpen(false));
+		document.addEventListener('keydown', event => {
+			if (event.key === 'Escape' && cartPanel.classList.contains('open')) setCartOpen(false);
+		});
+		checkout.addEventListener('click', () => {
+			const order = [...cart.values()].map(item => `${item.quantity} x ${item.name} (${formatPrice(item.price * item.quantity)})`).join('\n');
+			const total = [...cart.values()].reduce((sum, item) => sum + item.price * item.quantity, 0);
+			const message = `Hola, quiero hacer este pedido:\n${order}\nTotal: ${formatPrice(total)}`;
+			window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
+		});
+
+		const revealObserver = new IntersectionObserver(entries => {
+			entries.forEach(entry => {
+				if (entry.isIntersecting) {
+					entry.target.classList.add('visible');
+					revealObserver.unobserve(entry.target);
+				}
+			});
+		}, { threshold: 0.14 });
+		document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+	</script>
+</body>
+</html>
