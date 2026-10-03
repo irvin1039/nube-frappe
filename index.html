@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="theme-color" content="#f8f5ee">
-	<meta name="description" content="Frappés hechos para disfrutar sin prisa. Descubre los favoritos de Nube Frappe y arma tu pedido.">
+	<meta name="description" content="Frappés, café y antojitos preparados con cariño. Descubre el menú de Nube Frappe y arma tu pedido.">
 	<title>Nube Frappe | Un antojo en las nubes</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +36,8 @@
 		.announcement span { color: #f4c9bd; }
 		.nav { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; justify-content: space-between; height: 76px; padding: 0 max(5vw, calc((100vw - 1240px) / 2)); background: rgba(248,245,238,.94); border-bottom: 1px solid rgba(38,40,32,.08); backdrop-filter: blur(14px); }
 		.brand { display: inline-flex; gap: 10px; align-items: center; font-family: var(--serif); font-weight: 700; font-size: 21px; }
-		.brand-mark { display: grid; width: 35px; height: 35px; place-items: center; border-radius: 50%; background: var(--green); color: white; font-family: var(--sans); font-size: 17px; }
+		.brand-mark { display: grid; width: 39px; height: 39px; flex: 0 0 39px; place-items: center; border-radius: 50%; background: var(--green); }
+		.brand-mark svg { width: 29px; height: 29px; }
 		.nav-links { display: flex; align-items: center; gap: 34px; color: #55574f; font-size: 13px; }
 		.nav-links a { transition: color .2s; }
 		.nav-links a:hover { color: var(--green); }
@@ -80,6 +82,8 @@
 		.section-heading h2 { margin-bottom: 8px; font-family: var(--serif); font-size: clamp(34px, 4vw, 48px); font-weight: 600; line-height: 1.1; }
 		.section-heading p { margin-bottom: 0; color: var(--muted); font-size: 13px; line-height: 1.7; }
 		.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; }
+		.menu-category { grid-column: 1 / -1; margin: 24px 0 -7px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
+		.menu-category:first-child { margin-top: 0; }
 		.menu-card { overflow: hidden; background: var(--white); border: 1px solid #ece8df; transition: transform .3s, box-shadow .3s; }
 		.menu-card:hover { transform: translateY(-7px); box-shadow: 0 18px 38px #35372812; }
 		.menu-image { position: relative; height: 270px; overflow: hidden; background: #e7ded0; }
@@ -109,7 +113,19 @@
 		.quote-mark { color: var(--pink); font-family: var(--serif); font-size: 56px; line-height: .8; }
 		.quote-section blockquote { max-width: 690px; margin: 16px auto 18px; font-family: var(--serif); font-size: clamp(23px, 3vw, 34px); line-height: 1.4; }
 		.quote-section p { color: var(--muted); font-size: 11px; }
-		.stars { margin-bottom: 8px; color: #b07a44; letter-spacing: .16em; }
+		.stars { margin-bottom: 8px; color: #b07a44; font-size: 19px; letter-spacing: .16em; }
+		.rating-label { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; letter-spacing: .04em; }
+
+		.location-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; max-width: 1180px; margin: 0 auto; padding: 30px 30px 100px; }
+		.location-copy h2 { margin: 0 0 12px; font-family: var(--serif); font-size: clamp(34px, 4vw, 46px); font-weight: 600; line-height: 1.12; }
+		.location-copy p { max-width: 430px; margin-bottom: 20px; color: var(--muted); font-size: 13px; line-height: 1.8; }
+		.location-status { display: inline-flex; align-items: center; gap: 9px; padding: 10px 13px; border: 1px solid var(--line); background: var(--white); color: var(--green-dark); font-size: 11px; font-weight: 600; }
+		.location-status span { color: var(--pink); font-size: 17px; }
+		.map-placeholder { position: relative; display: grid; min-height: 260px; place-items: center; overflow: hidden; border: 1px solid var(--line); background-color: #eee9de; background-image: linear-gradient(32deg, transparent 47%, #d7ddcf 48%, #d7ddcf 51%, transparent 52%), linear-gradient(145deg, transparent 43%, #e1d8c8 44%, #e1d8c8 47%, transparent 48%); background-size: 150px 130px, 180px 160px; }
+		.map-placeholder::before, .map-placeholder::after { position: absolute; width: 1px; height: 150%; background: #ffffffa8; content: ""; transform: rotate(38deg); }
+		.map-placeholder::after { transform: rotate(-35deg); }
+		.map-pin { position: relative; z-index: 1; display: grid; width: 76px; height: 76px; place-items: center; border: 1px solid #ffffffb0; border-radius: 50%; background: #fffefaeb; box-shadow: 0 8px 25px #26282018; color: var(--green); font-size: 30px; }
+		.map-caption { position: absolute; z-index: 1; right: 13px; bottom: 12px; padding: 7px 10px; background: var(--white); color: var(--muted); font-size: 9px; letter-spacing: .04em; }
 
 		.closing-cta { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 30px; max-width: 1180px; margin: 0 auto 90px; padding: 42px 52px; overflow: hidden; background: var(--green-dark); color: white; }
 		.closing-cta::after { position: absolute; top: -110px; right: 13%; width: 260px; height: 260px; border: 1px solid #ffffff24; border-radius: 50%; box-shadow: 0 0 0 24px #ffffff08, 0 0 0 48px #ffffff06; content: ""; }
@@ -119,7 +135,8 @@
 		.closing-cta .button-primary:hover { background: #f5d4c9; }
 		footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; max-width: 1240px; margin: 0 auto; padding: 26px 30px 34px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
 		footer .brand { color: var(--ink); font-size: 17px; }
-		footer .brand-mark { width: 29px; height: 29px; font-size: 14px; }
+		footer .brand-mark { width: 32px; height: 32px; flex-basis: 32px; }
+		footer .brand-mark svg { width: 24px; height: 24px; }
 		.footer-links { display: flex; gap: 20px; }
 		.footer-links a:hover { color: var(--green); }
 
@@ -172,6 +189,8 @@
 			.story { grid-template-columns: 1fr; gap: 38px; padding: 65px 27px; }
 			.story-photo { height: 310px; margin: 0 8px; }
 			.story-copy h2 { font-size: 39px; }
+			.location-section { grid-template-columns: 1fr; gap: 25px; padding: 20px 22px 72px; }
+			.map-placeholder { min-height: 220px; }
 			.closing-cta { align-items: flex-start; flex-direction: column; margin: 0 18px 60px; padding: 32px 25px; }
 			footer { align-items: flex-start; flex-direction: column; padding: 25px 22px; }
 		}
@@ -196,11 +215,12 @@
 	<div class="page-wrap">
 		<div class="announcement">Un antojo bonito merece un <span>frappé perfecto</span> · Hecho al momento</div>
 		<header class="nav">
-			<a class="brand" href="#inicio" aria-label="Nube Frappe, inicio"><span class="brand-mark">n</span> nube frappe</a>
+			<a class="brand" href="#inicio" aria-label="Nube Frappe, inicio"><span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 19a7 7 0 0 1 13-3 8 8 0 0 1 14 4 6 6 0 0 1-2 12H14a7 7 0 0 1-3-13Z" fill="none" stroke="#fffefa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/><path d="m15 26 3 13h13l3-13M21 30h8M22 35h7M28 11l5 7" fill="none" stroke="#fffefa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/></svg></span> nube frappe</a>
 			<nav class="nav-links" aria-label="Navegación principal">
 				<a href="#menu">El menú</a>
 				<a href="#nosotros">Nuestra esencia</a>
 				<a href="#opiniones">Opiniones</a>
+				<a href="#ubicacion">Ubicación</a>
 			</nav>
 			<button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Tu pedido <span class="cart-count" id="cart-count">0</span></button>
 		</header>
@@ -240,10 +260,11 @@
 
 			<section class="section" id="menu">
 				<div class="section-heading reveal">
-					<div><div class="eyebrow">El menú</div><h2>¿Cuál se te antoja?</h2><p>Tu nuevo favorito está a un sorbo de distancia.</p></div>
+					<div><div class="eyebrow">El menú</div><h2>¿Cuál se te antoja?</h2><p>Bebidas y antojitos preparados al momento para cualquier hora del día.</p></div>
 					<a class="text-link" href="#pedido">Pide el tuyo <span aria-hidden="true">→</span></a>
 				</div>
 				<div class="menu-grid">
+					<h3 class="menu-category">Frappés y bebidas</h3>
 					<article class="menu-card reveal">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=82" alt="Frappé de fresa con crema" loading="lazy"><span class="badge">El consentido</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Fresa nube</h3><span class="price">$75</span></div><p>Fresas, leche cremosa y un toque de crema batida.</p><button class="add-button" type="button" data-name="Fresa nube" data-price="75">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
@@ -255,6 +276,43 @@
 					<article class="menu-card reveal">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=700&q=82" alt="Frappé de chocolate con crema" loading="lazy"><span class="badge">Puro apapacho</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Choco abrazo</h3><span class="price">$78</span></div><p>Chocolate, leche fría y lluvia de chispitas.</p><button class="add-button" type="button" data-name="Choco abrazo" data-price="78">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=82" alt="Frappé de vainilla con crema" loading="lazy"><span class="badge">Suave y cremoso</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Vainilla nube</h3><span class="price">$72</span></div><p>Vainilla, leche y crema batida para una pausa dulce.</p><button class="add-button" type="button" data-name="Vainilla nube" data-price="72">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=82" alt="Bebida fría de café y chocolate" loading="lazy"><span class="badge">Toque cafetero</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Moka nube</h3><span class="price">$82</span></div><p>Café, chocolate y leche fría, todo en un mismo antojo.</p><button class="add-button" type="button" data-name="Moka nube" data-price="82">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=700&q=82" alt="Bebida refrescante de mango" loading="lazy"><span class="badge">Frutalito</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Mango sunshine</h3><span class="price">$78</span></div><p>Mango dulce y fresquito para darle color a tu día.</p><button class="add-button" type="button" data-name="Mango sunshine" data-price="78">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<h3 class="menu-category">Comidita y algo dulce</h3>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=82" alt="Croissant recién horneado" loading="lazy"><span class="badge">Recién horneado</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Croissant nube</h3><span class="price">$55</span></div><p>Hojaldre doradito y crujiente, ideal con tu café.</p><button class="add-button" type="button" data-name="Croissant nube" data-price="55">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=82" alt="Sándwich preparado con ingredientes frescos" loading="lazy"><span class="badge">Para recargar</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Sándwich pollito</h3><span class="price">$89</span></div><p>Pollo, queso y vegetales frescos entre pan suave.</p><button class="add-button" type="button" data-name="Sándwich pollito" data-price="89">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=82" alt="Panini tostado con queso y vegetales" loading="lazy"><span class="badge">Calientito</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Panini caprese</h3><span class="price">$95</span></div><p>Queso, tomate y albahaca en pan doradito a la plancha.</p><button class="add-button" type="button" data-name="Panini caprese" data-price="95">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=700&q=82" alt="Waffles con fruta fresca" loading="lazy"><span class="badge">Para compartir</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Waffles con fresas</h3><span class="price">$85</span></div><p>Waffles calientitos con fresas y un toque dulce.</p><button class="add-button" type="button" data-name="Waffles con fresas" data-price="85">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=82" alt="Brownie de chocolate" loading="lazy"><span class="badge">Chocolate lover</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Brownie apapacho</h3><span class="price">$48</span></div><p>Brownie chocolatoso, suave por dentro y perfecto para el café.</p><button class="add-button" type="button" data-name="Brownie apapacho" data-price="48">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=82" alt="Galletas con chispas de chocolate" loading="lazy"><span class="badge">Un clásico</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Galletas chispitas</h3><span class="price">$35</span></div><p>Galletitas doradas con chispas de chocolate para el camino.</p><button class="add-button" type="button" data-name="Galletas chispitas" data-price="35">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
 				</div>
 			</section>
@@ -273,8 +331,22 @@
 			<section class="quote-section reveal" id="opiniones">
 				<div class="quote-mark" aria-hidden="true">“</div>
 				<div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
+				<span class="rating-label">5 de 5 estrellas</span>
 				<blockquote>“El de fresa sabe a que por fin llegó el fin de semana. Ya es mi parada obligatoria.”</blockquote>
 				<p>Mariana R. · Clienta feliz</p>
+			</section>
+
+			<section class="location-section" id="ubicacion">
+				<div class="location-copy reveal">
+					<div class="eyebrow">Ven a visitarnos</div>
+					<h2>Un lugarcito para disfrutar sin prisa.</h2>
+					<p>Estamos preparando este espacio para compartirte cómo llegar. Cuando nos pases la dirección, la agregamos aquí.</p>
+					<div class="location-status"><span aria-hidden="true">⌖</span> Dirección por confirmar</div>
+				</div>
+				<div class="map-placeholder reveal" role="img" aria-label="Mapa pendiente de actualizar con la ubicación del local">
+					<div class="map-pin" aria-hidden="true">⌖</div>
+					<span class="map-caption">Mapa en preparación</span>
+				</div>
 			</section>
 
 			<section class="closing-cta" id="pedido">
@@ -284,9 +356,9 @@
 		</main>
 
 		<footer>
-			<a class="brand" href="#inicio"><span class="brand-mark">n</span> nube frappe</a>
+			<a class="brand" href="#inicio"><span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 19a7 7 0 0 1 13-3 8 8 0 0 1 14 4 6 6 0 0 1-2 12H14a7 7 0 0 1-3-13Z" fill="none" stroke="#fffefa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/><path d="m15 26 3 13h13l3-13M21 30h8M22 35h7M28 11l5 7" fill="none" stroke="#fffefa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/></svg></span> nube frappe</a>
 			<span>Una pausa rica, hecha con cariño.</span>
-			<div class="footer-links"><a href="#menu">Menú</a><a href="#nosotros">Nosotros</a><a href="#inicio">Volver arriba ↑</a></div>
+			<div class="footer-links"><a href="#menu">Menú</a><a href="#nosotros">Nosotros</a><a href="#ubicacion">Ubicación</a><a href="#inicio">Volver arriba ↑</a></div>
 		</footer>
 	</div>
 
