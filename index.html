@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,6 +23,7 @@
 			--sans: "DM Sans", sans-serif;
 		}
 
+
 		* { box-sizing: border-box; }
 		html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 		body { margin: 0; background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
@@ -44,6 +44,7 @@
 		.cart-button { display: inline-flex; align-items: center; gap: 9px; padding: 10px 15px; border: 1px solid var(--line); border-radius: 99px; background: var(--white); color: var(--ink); font-size: 12px; transition: background .2s, transform .2s; }
 		.cart-button:hover { background: #fff; transform: translateY(-2px); }
 		.cart-count { display: grid; width: 21px; height: 21px; place-items: center; border-radius: 50%; background: var(--green); color: white; font-size: 11px; }
+
 
 		.hero { position: relative; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 40px; min-height: 620px; max-width: 1440px; margin: 0 auto; padding: 76px max(7vw, calc((100vw - 1180px) / 2)) 82px; }
 		.hero-copy { position: relative; z-index: 2; max-width: 510px; animation: rise-in .8s both; }
@@ -72,10 +73,12 @@
 		.floating-tag small { margin-top: 5px; font-size: 9px; letter-spacing: .06em; }
 		.hero-scribble { position: absolute; right: -5%; top: 20%; width: 90px; color: var(--green); font-family: var(--serif); font-size: 46px; transform: rotate(14deg); }
 
+
 		.ticker { overflow: hidden; padding: 15px 0; background: var(--green); color: white; }
 		.ticker-track { display: flex; width: max-content; align-items: center; animation: ticker 26s linear infinite; }
 		.ticker-item { display: inline-flex; align-items: center; gap: 26px; padding: 0 26px; font-family: var(--serif); font-size: 16px; font-style: italic; white-space: nowrap; }
 		.ticker-item b { color: #f0c6b8; font-family: var(--sans); font-size: 13px; }
+
 
 		.section { max-width: 1240px; margin: 0 auto; padding: 100px 30px; }
 		.section-heading { display: flex; justify-content: space-between; align-items: end; gap: 25px; margin-bottom: 38px; }
@@ -84,6 +87,11 @@
 		.menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; }
 		.menu-category { grid-column: 1 / -1; margin: 24px 0 -7px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; }
 		.menu-category:first-child { margin-top: 0; }
+		.menu-filters { display: flex; flex-wrap: wrap; gap: 9px; margin: 0 0 29px; }
+		.menu-filter { padding: 9px 15px; border: 1px solid var(--line); border-radius: 99px; background: var(--white); color: var(--muted); font-size: 11px; transition: background .2s, color .2s, border-color .2s; }
+		.menu-filter:hover, .menu-filter[aria-pressed="true"] { border-color: var(--green); background: var(--green); color: white; }
+		.menu-card[hidden], .menu-category[hidden] { display: none; }
+		.menu-note { margin: -16px 0 23px; color: var(--muted); font-size: 10px; }
 		.menu-card { overflow: hidden; background: var(--white); border: 1px solid #ece8df; transition: transform .3s, box-shadow .3s; }
 		.menu-card:hover { transform: translateY(-7px); box-shadow: 0 18px 38px #35372812; }
 		.menu-image { position: relative; height: 270px; overflow: hidden; background: #e7ded0; }
@@ -99,6 +107,7 @@
 		.add-button span:last-child { display: grid; width: 25px; height: 25px; place-items: center; border: 1px solid #dce2d8; border-radius: 50%; font-size: 16px; transition: color .2s, background .2s; }
 		.add-button:hover span:last-child { background: var(--green); color: white; }
 
+
 		.story { display: grid; grid-template-columns: .95fr 1.05fr; align-items: center; gap: 9%; max-width: none; padding: 92px max(8vw, calc((100vw - 1120px) / 2)); background: #eee9de; }
 		.story-photo { position: relative; height: 410px; }
 		.story-photo img { width: 100%; height: 100%; object-fit: cover; }
@@ -109,12 +118,38 @@
 		.promise { display: flex; align-items: center; gap: 10px; font-size: 11px; font-weight: 600; }
 		.promise span { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 50%; background: #dce2d8; color: var(--green); font-size: 13px; }
 
-		.quote-section { padding: 84px 25px; text-align: center; }
-		.quote-mark { color: var(--pink); font-family: var(--serif); font-size: 56px; line-height: .8; }
-		.quote-section blockquote { max-width: 690px; margin: 16px auto 18px; font-family: var(--serif); font-size: clamp(23px, 3vw, 34px); line-height: 1.4; }
-		.quote-section p { color: var(--muted); font-size: 11px; }
+
+		.quote-section { padding: 84px 30px; text-align: center; }
+		.quote-section .eyebrow { justify-content: center; }
+		.quote-section h2, .guide-section h2, .faq-section h2 { margin: 0 0 12px; font-family: var(--serif); font-size: clamp(34px, 4vw, 46px); font-weight: 600; }
+		.quote-intro, .guide-intro { margin-bottom: 28px; color: var(--muted); font-size: 12px; line-height: 1.8; }
+		.review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; max-width: 1120px; margin: 30px auto 0; text-align: left; }
+		.review-card { padding: 24px; border: 1px solid var(--line); background: var(--white); }
+		.review-card blockquote { margin: 13px 0 18px; font-family: var(--serif); font-size: 18px; line-height: 1.55; }
+		.review-card p { margin: 0; color: var(--muted); font-size: 10px; }
+		.review-caption { display: inline-block; padding: 5px 8px; background: #eee9de; color: var(--green-dark); font-size: 9px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
 		.stars { margin-bottom: 8px; color: #b07a44; font-size: 19px; letter-spacing: .16em; }
+		.stars span { display: inline-block; transform-origin: center; animation: star-twinkle 1.8s ease-in-out infinite; }
+		.stars span:nth-child(2) { animation-delay: .16s; }
+		.stars span:nth-child(3) { animation-delay: .32s; }
+		.stars span:nth-child(4) { animation-delay: .48s; }
+		.stars span:nth-child(5) { animation-delay: .64s; }
 		.rating-label { display: block; margin-top: 4px; color: var(--muted); font-size: 10px; letter-spacing: .04em; }
+
+
+		.guide-section { padding-top: 55px; }
+		.guide-section > h2, .guide-intro, .faq-section > h2 { text-align: center; }
+		.guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 30px; }
+		.guide-card { padding: 25px; border: 1px solid var(--line); background: var(--white); }
+		.guide-number { display: grid; width: 35px; height: 35px; margin-bottom: 17px; place-items: center; border-radius: 50%; background: #dce2d8; color: var(--green-dark); font-family: var(--serif); font-size: 18px; }
+		.guide-card h3 { margin-bottom: 8px; font-family: var(--serif); font-size: 20px; }
+		.guide-card p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.8; }
+		.faq-section { padding-top: 25px; }
+		.faq-list { max-width: 800px; margin: 25px auto 0; border-top: 1px solid var(--line); }
+		.faq-list details { padding: 17px 5px; border-bottom: 1px solid var(--line); }
+		.faq-list summary { color: var(--ink); cursor: pointer; font-size: 13px; font-weight: 600; }
+		.faq-list details p { margin: 11px 0 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+
 
 		.location-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 48px; max-width: 1180px; margin: 0 auto; padding: 30px 30px 100px; }
 		.location-copy h2 { margin: 0 0 12px; font-family: var(--serif); font-size: clamp(34px, 4vw, 46px); font-weight: 600; line-height: 1.12; }
@@ -126,6 +161,7 @@
 		.map-placeholder::after { transform: rotate(-35deg); }
 		.map-pin { position: relative; z-index: 1; display: grid; width: 76px; height: 76px; place-items: center; border: 1px solid #ffffffb0; border-radius: 50%; background: #fffefaeb; box-shadow: 0 8px 25px #26282018; color: var(--green); font-size: 30px; }
 		.map-caption { position: absolute; z-index: 1; right: 13px; bottom: 12px; padding: 7px 10px; background: var(--white); color: var(--muted); font-size: 9px; letter-spacing: .04em; }
+
 
 		.closing-cta { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 30px; max-width: 1180px; margin: 0 auto 90px; padding: 42px 52px; overflow: hidden; background: var(--green-dark); color: white; }
 		.closing-cta::after { position: absolute; top: -110px; right: 13%; width: 260px; height: 260px; border: 1px solid #ffffff24; border-radius: 50%; box-shadow: 0 0 0 24px #ffffff08, 0 0 0 48px #ffffff06; content: ""; }
@@ -139,6 +175,7 @@
 		footer .brand-mark svg { width: 24px; height: 24px; }
 		.footer-links { display: flex; gap: 20px; }
 		.footer-links a:hover { color: var(--green); }
+
 
 		.cart-panel { position: fixed; inset: 0 0 0 auto; z-index: 50; display: flex; width: min(410px, 100%); flex-direction: column; padding: 25px; background: var(--white); box-shadow: -15px 0 45px #00000018; transform: translateX(105%); transition: transform .32s ease; }
 		.cart-panel.open { transform: translateX(0); }
@@ -166,6 +203,8 @@
 		@keyframes photo-enter { from { transform: scale(1.08); filter: saturate(.6); } to { transform: scale(1); filter: saturate(1); } }
 		@keyframes float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
 		@keyframes ticker { to { transform: translateX(-50%); } }
+		@keyframes star-twinkle { 0%, 100% { transform: scale(1); opacity: .76; } 50% { transform: scale(1.22) rotate(-7deg); opacity: 1; } }
+
 
 		@media (max-width: 760px) {
 			.nav { height: 65px; padding: 0 18px; }
@@ -182,6 +221,7 @@
 			.section-heading { align-items: start; flex-direction: column; margin-bottom: 27px; }
 			.menu-grid { grid-template-columns: repeat(2, 1fr); gap: 13px; }
 			.menu-image { height: 210px; }
+			.review-grid, .guide-grid { grid-template-columns: 1fr; }
 			.menu-info { padding: 14px 13px; }
 			.menu-title-row { align-items: start; flex-direction: column; gap: 4px; }
 			.menu-title-row h3 { font-size: 19px; }
@@ -225,6 +265,7 @@
 			<button class="cart-button" id="open-cart" type="button" aria-label="Abrir carrito">Tu pedido <span class="cart-count" id="cart-count">0</span></button>
 		</header>
 
+
 		<main>
 			<section class="hero" id="inicio">
 				<div class="hero-copy">
@@ -251,6 +292,7 @@
 				</div>
 			</section>
 
+
 			<div class="ticker" aria-label="Preparado al momento, ingredientes reales, felicidad en cada sorbo">
 				<div class="ticker-track" aria-hidden="true">
 					<span class="ticker-item">Preparado al momento <b>✳</b></span><span class="ticker-item">Ingredientes reales <b>✳</b></span><span class="ticker-item">Felicidad en cada sorbo <b>✳</b></span><span class="ticker-item">Un capricho bien merecido <b>✳</b></span>
@@ -258,64 +300,109 @@
 				</div>
 			</div>
 
+
 			<section class="section" id="menu">
 				<div class="section-heading reveal">
 					<div><div class="eyebrow">El menú</div><h2>¿Cuál se te antoja?</h2><p>Bebidas y antojitos preparados al momento para cualquier hora del día.</p></div>
 					<a class="text-link" href="#pedido">Pide el tuyo <span aria-hidden="true">→</span></a>
 				</div>
+				<div class="menu-filters" role="group" aria-label="Filtrar productos">
+					<button class="menu-filter" type="button" data-filter="todos" aria-pressed="true">Todo el menú</button>
+					<button class="menu-filter" type="button" data-filter="bebidas" aria-pressed="false">Bebidas</button>
+					<button class="menu-filter" type="button" data-filter="salado" aria-pressed="false">Saladito</button>
+					<button class="menu-filter" type="button" data-filter="dulce" aria-pressed="false">Dulce</button>
+				</div>
+				<p class="menu-note">Menú y precios de ejemplo; productos y disponibilidad por confirmar.</p>
 				<div class="menu-grid">
-					<h3 class="menu-category">Frappés y bebidas</h3>
-					<article class="menu-card reveal">
+					<h3 class="menu-category" data-category="bebidas">Frappés y bebidas</h3>
+					<article class="menu-card reveal" data-category="bebidas">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=82" alt="Frappé de fresa con crema" loading="lazy"><span class="badge">El consentido</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Fresa nube</h3><span class="price">$75</span></div><p>Fresas, leche cremosa y un toque de crema batida.</p><button class="add-button" type="button" data-name="Fresa nube" data-price="75">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="bebidas">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=82" alt="Frappé frío de café con espuma" loading="lazy"><span class="badge">Para despertar</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Caramelo chill</h3><span class="price">$80</span></div><p>Café espresso, caramelo suave y hielito frappeado.</p><button class="add-button" type="button" data-name="Caramelo chill" data-price="80">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="bebidas">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=700&q=82" alt="Frappé de chocolate con crema" loading="lazy"><span class="badge">Puro apapacho</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Choco abrazo</h3><span class="price">$78</span></div><p>Chocolate, leche fría y lluvia de chispitas.</p><button class="add-button" type="button" data-name="Choco abrazo" data-price="78">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="bebidas">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=700&q=82" alt="Frappé de vainilla con crema" loading="lazy"><span class="badge">Suave y cremoso</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Vainilla nube</h3><span class="price">$72</span></div><p>Vainilla, leche y crema batida para una pausa dulce.</p><button class="add-button" type="button" data-name="Vainilla nube" data-price="72">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="bebidas">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=82" alt="Bebida fría de café y chocolate" loading="lazy"><span class="badge">Toque cafetero</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Moka nube</h3><span class="price">$82</span></div><p>Café, chocolate y leche fría, todo en un mismo antojo.</p><button class="add-button" type="button" data-name="Moka nube" data-price="82">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="bebidas">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1525385133512-2f3bdd039054?auto=format&fit=crop&w=700&q=82" alt="Bebida refrescante de mango" loading="lazy"><span class="badge">Frutalito</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Mango sunshine</h3><span class="price">$78</span></div><p>Mango dulce y fresquito para darle color a tu día.</p><button class="add-button" type="button" data-name="Mango sunshine" data-price="78">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<h3 class="menu-category">Comidita y algo dulce</h3>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="bebidas">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1515823064-d6e0c04616a7?auto=format&fit=crop&w=700&q=82" alt="Bebida de matcha con leche" loading="lazy"><span class="badge">Verdecito rico</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Matcha nube</h3><span class="price">$85</span></div><p>Matcha cremoso con leche fría, suave y refrescante.</p><button class="add-button" type="button" data-name="Matcha nube" data-price="85">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal" data-category="bebidas">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1571934811356-5cc061b6821f?auto=format&fit=crop&w=700&q=82" alt="Té chai con espuma de leche" loading="lazy"><span class="badge">Especias y cariño</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Chai canelita</h3><span class="price">$80</span></div><p>Té chai con especias aromáticas y un toque de leche.</p><button class="add-button" type="button" data-name="Chai canelita" data-price="80">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal" data-category="bebidas">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765edfd7?auto=format&fit=crop&w=700&q=82" alt="Limonada fresca con hielo y limón" loading="lazy"><span class="badge">Fresca y cítrica</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Limonada brillito</h3><span class="price">$55</span></div><p>Limón y hielito para una pausa fresca y ligera.</p><button class="add-button" type="button" data-name="Limonada brillito" data-price="55">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<h3 class="menu-category" data-category="salado">Para comer rico</h3>
+					<article class="menu-card reveal" data-category="salado">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=700&q=82" alt="Croissant recién horneado" loading="lazy"><span class="badge">Recién horneado</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Croissant nube</h3><span class="price">$55</span></div><p>Hojaldre doradito y crujiente, ideal con tu café.</p><button class="add-button" type="button" data-name="Croissant nube" data-price="55">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="salado">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=82" alt="Sándwich preparado con ingredientes frescos" loading="lazy"><span class="badge">Para recargar</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Sándwich pollito</h3><span class="price">$89</span></div><p>Pollo, queso y vegetales frescos entre pan suave.</p><button class="add-button" type="button" data-name="Sándwich pollito" data-price="89">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="salado">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=82" alt="Panini tostado con queso y vegetales" loading="lazy"><span class="badge">Calientito</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Panini caprese</h3><span class="price">$95</span></div><p>Queso, tomate y albahaca en pan doradito a la plancha.</p><button class="add-button" type="button" data-name="Panini caprese" data-price="95">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="dulce">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&w=700&q=82" alt="Waffles con fruta fresca" loading="lazy"><span class="badge">Para compartir</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Waffles con fresas</h3><span class="price">$85</span></div><p>Waffles calientitos con fresas y un toque dulce.</p><button class="add-button" type="button" data-name="Waffles con fresas" data-price="85">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="dulce">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=82" alt="Brownie de chocolate" loading="lazy"><span class="badge">Chocolate lover</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Brownie apapacho</h3><span class="price">$48</span></div><p>Brownie chocolatoso, suave por dentro y perfecto para el café.</p><button class="add-button" type="button" data-name="Brownie apapacho" data-price="48">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
-					<article class="menu-card reveal">
+					<article class="menu-card reveal" data-category="dulce">
 						<div class="menu-image"><img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=700&q=82" alt="Galletas con chispas de chocolate" loading="lazy"><span class="badge">Un clásico</span></div>
 						<div class="menu-info"><div class="menu-title-row"><h3>Galletas chispitas</h3><span class="price">$35</span></div><p>Galletitas doradas con chispas de chocolate para el camino.</p><button class="add-button" type="button" data-name="Galletas chispitas" data-price="35">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
 					</article>
+					<article class="menu-card reveal" data-category="dulce">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=82" alt="Pan dulce espolvoreado con azúcar" loading="lazy"><span class="badge">Dulcecito</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Conchita de la casa</h3><span class="price">$42</span></div><p>Pan suavecito con cubierta dulce, rico a cualquier hora.</p><button class="add-button" type="button" data-name="Conchita de la casa" data-price="42">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal" data-category="salado">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=700&q=82" alt="Pan tostado con aguacate y vegetales" loading="lazy"><span class="badge">Verde y deli</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Toast aguacatito</h3><span class="price">$78</span></div><p>Pan tostado con aguacate cremoso y un toque de limón.</p><button class="add-button" type="button" data-name="Toast aguacatito" data-price="78">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
+					<article class="menu-card reveal" data-category="dulce">
+						<div class="menu-image"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=82" alt="Yogur con fruta fresca y granola" loading="lazy"><span class="badge">Ligero y frutal</span></div>
+						<div class="menu-info"><div class="menu-title-row"><h3>Vasito de granola</h3><span class="price">$68</span></div><p>Yogur cremoso, fruta fresca y granolita crujiente.</p><button class="add-button" type="button" data-name="Vasito de granola" data-price="68">Agregar a mi pedido <span aria-hidden="true">+</span></button></div>
+					</article>
 				</div>
 			</section>
+
+
+			<section class="section guide-section" id="como-pedir">
+				<div class="eyebrow">Así de fácil</div>
+				<h2>Tu antojo, en tres pasitos.</h2>
+				<p class="guide-intro">Arma una combinación a tu gusto y revisa tu pedido antes de enviarlo.</p>
+				<div class="guide-grid">
+					<article class="guide-card"><span class="guide-number">1</span><h3>Elige tus favoritos</h3><p>Explora las bebidas y los antojitos del menú. Usa los filtros para encontrar algo rico más rápido.</p></article>
+					<article class="guide-card"><span class="guide-number">2</span><h3>Arma tu pedido</h3><p>Añade productos al carrito, cambia las cantidades y consulta el total de tu selección.</p></article>
+					<article class="guide-card"><span class="guide-number">3</span><h3>Compártelo</h3><p>Continúa por WhatsApp para compartir el resumen y confirmar disponibilidad.</p></article>
+				</div>
+			</section>
+
 
 			<section class="section story" id="nosotros">
 				<div class="story-photo reveal"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85" alt="Preparación artesanal de una bebida de café" loading="lazy"></div>
@@ -328,13 +415,45 @@
 				</div>
 			</section>
 
+
 			<section class="quote-section reveal" id="opiniones">
-				<div class="quote-mark" aria-hidden="true">“</div>
-				<div class="stars" aria-label="5 de 5 estrellas">★★★★★</div>
-				<span class="rating-label">5 de 5 estrellas</span>
-				<blockquote>“El de fresa sabe a que por fin llegó el fin de semana. Ya es mi parada obligatoria.”</blockquote>
-				<p>Mariana R. · Clienta feliz</p>
+				<div class="eyebrow">Palabras con sabor</div>
+				<h2>Imagina tu próximo favorito.</h2>
+				<p class="quote-intro">Reseñas de ejemplo para mostrar cómo se verá esta sección. Se reemplazarán por opiniones reales de clientes.</p>
+				<div class="review-grid">
+					<article class="review-card">
+						<span class="review-caption">Ejemplo de reseña</span>
+						<div class="stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
+						<blockquote>“Una bebida fresquita y un panecito dulce: mi combinación imaginada para la tarde.”</blockquote>
+						<p>Opinión de muestra · Falta reseña real</p>
+					</article>
+					<article class="review-card">
+						<span class="review-caption">Ejemplo de reseña</span>
+						<div class="stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
+						<blockquote>“Un frappé de chocolate con brownie suena como el apapacho perfecto para el fin de semana.”</blockquote>
+						<p>Opinión de muestra · Falta reseña real</p>
+					</article>
+					<article class="review-card">
+						<span class="review-caption">Ejemplo de reseña</span>
+						<div class="stars" aria-label="5 de 5 estrellas"><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span><span aria-hidden="true">★</span></div>
+						<blockquote>“Un lugar para hacer una pausa, probar algo rico y compartir un ratito sin prisa.”</blockquote>
+						<p>Opinión de muestra · Falta reseña real</p>
+					</article>
+				</div>
 			</section>
+
+
+			<section class="section faq-section" id="preguntas">
+				<div class="eyebrow">Te contamos</div>
+				<h2>Preguntas frecuentes</h2>
+				<div class="faq-list">
+					<details><summary>¿Los productos y precios ya están confirmados?</summary><p>Todavía no; este menú es una propuesta de ejemplo. Confirma productos, ingredientes, precios y disponibilidad antes de realizar un pedido.</p></details>
+					<details><summary>¿Cómo puedo hacer un pedido?</summary><p>Agrega tus favoritos al carrito y pulsa “Continuar por WhatsApp”. Se abrirá un mensaje con el resumen para que puedas consultar y confirmar tu pedido.</p></details>
+					<details><summary>¿Qué hago si tengo alergias o restricciones?</summary><p>Consulta los ingredientes directamente antes de ordenar. La información de este menú es ilustrativa y no sustituye la confirmación de ingredientes.</p></details>
+					<details><summary>¿Dónde está el local?</summary><p>La dirección todavía está por confirmar; la añadiremos cuando esté disponible.</p></details>
+				</div>
+			</section>
+
 
 			<section class="location-section" id="ubicacion">
 				<div class="location-copy reveal">
@@ -349,11 +468,13 @@
 				</div>
 			</section>
 
+
 			<section class="closing-cta" id="pedido">
 				<div><h2>Tu próximo antojo ya te está esperando.</h2><p>Elige tu favorito y prepáralo para compartir (o no).</p></div>
 				<a class="button-primary" href="#menu">Arma tu pedido <span aria-hidden="true">→</span></a>
 			</section>
 		</main>
+
 
 		<footer>
 			<a class="brand" href="#inicio"><span class="brand-mark"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 19a7 7 0 0 1 13-3 8 8 0 0 1 14 4 6 6 0 0 1-2 12H14a7 7 0 0 1-3-13Z" fill="none" stroke="#fffefa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/><path d="m15 26 3 13h13l3-13M21 30h8M22 35h7M28 11l5 7" fill="none" stroke="#fffefa" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"/></svg></span> nube frappe</a>
@@ -362,6 +483,7 @@
 		</footer>
 	</div>
 
+
 	<div class="cart-overlay" id="cart-overlay"></div>
 	<aside class="cart-panel" id="cart-panel" aria-label="Tu pedido" aria-hidden="true">
 		<div class="cart-header"><h2>Tu pedido</h2><button class="icon-button" id="close-cart" type="button" aria-label="Cerrar carrito">×</button></div>
@@ -369,6 +491,7 @@
 		<div class="cart-bottom"><div class="cart-total"><span>Total</span><span id="cart-total">$0</span></div><button class="button-primary checkout" id="checkout" type="button" disabled>Continuar por WhatsApp <span aria-hidden="true">→</span></button></div>
 	</aside>
 	<div class="toast" id="toast" role="status" aria-live="polite">Agregado a tu pedido</div>
+
 
 	<script>
 		const cart = new Map();
@@ -381,9 +504,11 @@
 		const toast = document.getElementById('toast');
 		let toastTimer;
 
+
 		function formatPrice(amount) {
 			return new Intl.NumberFormat('es-MX', { style: 'currency', currency: 'MXN', maximumFractionDigits: 0 }).format(amount);
 		}
+
 
 		function renderCart() {
 			const entries = [...cart.values()];
@@ -403,6 +528,7 @@
 				</div>`).join('');
 		}
 
+
 		function setCartOpen(open) {
 			cartPanel.classList.toggle('open', open);
 			cartOverlay.classList.toggle('visible', open);
@@ -411,11 +537,13 @@
 			if (open) document.getElementById('close-cart').focus();
 		}
 
+
 		function showToast() {
 			toast.classList.add('show');
 			clearTimeout(toastTimer);
 			toastTimer = setTimeout(() => toast.classList.remove('show'), 1900);
 		}
+
 
 		document.querySelectorAll('.add-button').forEach(button => {
 			button.addEventListener('click', () => {
@@ -428,6 +556,23 @@
 			});
 		});
 
+
+		document.querySelectorAll('.menu-filter').forEach(button => {
+			button.addEventListener('click', () => {
+				const category = button.dataset.filter;
+				document.querySelectorAll('.menu-filter').forEach(filter => {
+					filter.setAttribute('aria-pressed', String(filter === button));
+				});
+				document.querySelectorAll('.menu-card').forEach(card => {
+					card.hidden = category !== 'todos' && card.dataset.category !== category;
+				});
+				document.querySelectorAll('.menu-category').forEach(heading => {
+					heading.hidden = category !== 'todos' && heading.dataset.category !== category;
+				});
+			});
+		});
+
+
 		cartItems.addEventListener('click', event => {
 			const button = event.target.closest('button[data-action]');
 			if (!button) return;
@@ -438,6 +583,7 @@
 			if (item.quantity <= 0) cart.delete(item.name);
 			renderCart();
 		});
+
 
 		document.getElementById('open-cart').addEventListener('click', () => setCartOpen(true));
 		document.getElementById('close-cart').addEventListener('click', () => setCartOpen(false));
@@ -451,6 +597,7 @@
 			const message = `Hola, quiero hacer este pedido:\n${order}\nTotal: ${formatPrice(total)}`;
 			window.open(`https://wa.me/?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
 		});
+
 
 		const revealObserver = new IntersectionObserver(entries => {
 			entries.forEach(entry => {
